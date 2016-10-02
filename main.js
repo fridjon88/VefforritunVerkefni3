@@ -172,6 +172,8 @@ var Forum = (function() {
 
       entry.appendChild(nameNode);
       entry.appendChild(textNode);
+      entry.appendChild(createReplyForm());
+
 
       return entry;
   }
@@ -183,7 +185,47 @@ var Forum = (function() {
    *
    * @return {node} DOM node fyrir reply form
    */
-  function createReplyForm() {
+  function createReplyForm() { //work in progress
+    var entry = document.createElement('form');
+    entry.classList.add('item', 'item-new', 'list-group-item', 'jumbotron');
+
+    var nameNode = document.createElement('h2');
+    nameNode.classList.add('name');
+    nameNode.appendChild(document.createTextNode('test'));
+
+    var inputNodeName = document.createElement('input');
+    inputNodeName.className = 'name';
+    inputNodeName.placeholder = 'Nafn';
+    inputNodeName.classList.add('name');
+    inputNodeName.appendChild(document.createTextNode(''));
+
+    var inputNodeReply = document.createElement('input');
+    inputNodeReply.className = 'reply';
+    inputNodeReply.placeholder = 'Svar';
+    inputNodeReply.classList.add('reply');
+    inputNodeReply.appendChild(document.createTextNode(''));
+
+    var buttonNode = document.createElement('button');
+    buttonNode.className = 'submitButton';
+    buttonNode.type = 'submit';
+    buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil');
+    buttonNode.appendChild(document.createTextNode('Svara'));
+
+    entry.appendChild(nameNode);
+    entry.appendChild(inputNodeName);
+    entry.appendChild(inputNodeReply);
+    entry.appendChild(buttonNode);
+
+    return entry;
+    // console.log('create reoky form');
+    // var entry = document.createElement('form');
+    // entry.classList.add('reply');
+    //
+    // var nameInputNode = document.createElement('input');
+    // nameInputNode.classList.add('name');
+    // document.getElementsByName('name').placeholder = 'Nafn';
+    //
+    // return entry;
   }
 
   /**
