@@ -40,6 +40,11 @@ var Forum = (function() {
    */
   function init() {
     console.log('Halló heimur!');
+    var form = document.getElementById('form');
+    var button = form.querySelector('button');
+    var list = document.querySelector('.list');
+
+    form.addEventListener('submit', newEntryHandler);
   }
 
   /**
@@ -67,6 +72,29 @@ var Forum = (function() {
    * @param {object} e Event frá formi
    */
   function newEntryHandler(e) {
+    console.log('Submit á formi, event er', e);
+
+    e.preventDefault();
+
+    var form = e.target;
+    var nameEntry = form.querySelector('input[name=name]');
+    var textEntry = form.querySelector('textarea[name=comment]');
+
+    var name = nameEntry ? nameEntry.value : '';
+    var text = textEntry ? textEntry.value : '';
+
+    console.log('nafn er', name);
+    console.log('texti er', text);
+
+    var node = addEntry(name, text);
+
+    var list = document.querySelector('.list');
+    console.log('Bætum', node, 'við', list);
+
+    list.appendChild(node);
+
+    nameEntry.value = '';
+    textEntry.value = '';
   }
 
   /**
@@ -128,6 +156,22 @@ var Forum = (function() {
    * @param {string} text Texti á færslu
    */
   function addEntry(name, text) {
+      var entry = document.createElement('li');
+      entry.classList.add('item', 'item-new', 'list-group-item');
+      // entry.dataset.date = date;
+
+      var nameNode = document.createElement('h2');
+      nameNode.classList.add('name');
+      nameNode.appendChild(document.createTextNode(name));
+
+      var textNode = document.createElement('div');
+      textNode.classList.add('text');
+      textNode.appendChild(document.createTextNode(text));
+
+      entry.appendChild(nameNode);
+      entry.appendChild(textNode);
+
+      return entry;
   }
 
   /**

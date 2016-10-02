@@ -5,18 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verkefni 3</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/stylesheet.css">
   </head>
   <body>
     <main class="container">
-      <h1>Spjallborð hinna háfleygu hugmynda</h1>
-      <hr>
-      <section class="entries">
+      <div class="jumbotron">
+        <h1>Spjallborð hinna háfleygu hugmynda</h1>
+        <hr>
+        <section class="entries">
+          <ul class="list list-group">
 
-      </section>
-      <h2>Ný færsla</h2>
-      <form id="new-entry">
+          </ul>
+        </section>
+        <h2>Ný færsla</h2>
+        <form class="form" method="post" action="" id="form">
+          <div class="form-group">
+            <label for="nafn">Nafn:</label>
+            <input class="form-control" type="text" name="name" id="name">
 
-      </form>
+          </div>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" name="comment" id="comment"></textarea>
+          </div>
+          <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> Skrifa</button>
+        </form>
+      </div>
     </main>
     <script src="main.js"></script>
   </body>
