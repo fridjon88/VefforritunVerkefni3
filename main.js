@@ -44,6 +44,8 @@ var Forum = (function() {
     var button = form.querySelector('button');
     var list = document.querySelector('.list');
 
+    console.log('fann form', form, 'með button', button);
+
     form.addEventListener('submit', newEntryHandler);
   }
 
