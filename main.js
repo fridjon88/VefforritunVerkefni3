@@ -47,6 +47,7 @@ var Forum = (function() {
     console.log('fann form', form, 'með button', button);
 
     form.addEventListener('submit', newEntryHandler);
+
   }
 
   /**
@@ -106,6 +107,31 @@ var Forum = (function() {
    * @param {object} e Event frá formi
    */
   function newReplyHandler(e) {
+    console.log('Submit á reply formi, event er', e);
+
+    e.preventDefault();
+
+    var form = e.target;
+    var nameEntry = form.querySelector('input[name=name]');
+    var textEntry = form.querySelector('input[name=comment]');
+
+    var name = nameEntry ? nameEntry.value : '';
+    var text = textEntry ? textEntry.value : '';
+
+    console.log('nafn er', name);
+    console.log('texti er', text);
+
+    var replysNode = document.createElement('li');
+    replysNode.classList.add('item', 'item-new', 'list-group-item');
+    addReply(replysNode,name, text);
+
+    var list = document.querySelector('.list');
+    console.log('Bætum', replysNode, 'við', list);
+
+    list.appendChild(replysNode);
+
+    nameEntry.value = '';
+    textEntry.value = '';
   }
 
   /**
@@ -191,16 +217,18 @@ var Forum = (function() {
 
     var nameNode = document.createElement('h2');
     nameNode.classList.add('name');
-    nameNode.appendChild(document.createTextNode('test'));
+    nameNode.appendChild(document.createTextNode(''));
 
     var inputNodeName = document.createElement('input');
     inputNodeName.className = 'name';
+    inputNodeName.name = 'name';
     inputNodeName.placeholder = 'Nafn';
     inputNodeName.classList.add('name');
     inputNodeName.appendChild(document.createTextNode(''));
 
     var inputNodeReply = document.createElement('input');
-    inputNodeReply.className = 'reply';
+    inputNodeReply.className = 'comment';
+    inputNodeReply.name = 'comment';
     inputNodeReply.placeholder = 'Svar';
     inputNodeReply.classList.add('reply');
     inputNodeReply.appendChild(document.createTextNode(''));
@@ -208,13 +236,27 @@ var Forum = (function() {
     var buttonNode = document.createElement('button');
     buttonNode.className = 'submitButton';
     buttonNode.type = 'submit';
+    buttonNode.name = 'submitButton';
     buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil');
     buttonNode.appendChild(document.createTextNode('Svara'));
+    console.log('Bjó til', buttonNode, inputNodeReply);
+    entry.addEventListener('submit', newReplyHandler);
+    // var replysNode = document.createElement('li');
+    // replysNode.appendChild(document.createTextNode('NODE'));
+
+    // entry.addEventListener('submit', newEntryHandler);
+    // Hvað er í gangi hér?! hvernig læt ég takkann hlusta?!
+    //skoða replayHandler!!! allt þessar 4 línur semi rugl
+    // var button = form.querySelector('button');
+    // var nameEntry = form.querySelector('input[name=name]');
+    // var textEntry = form.querySelector('textarea[name=comment]');
+    // button.addEventListener('click', addReply(replysNode,nameEntry,textEntry));
 
     entry.appendChild(nameNode);
     entry.appendChild(inputNodeName);
     entry.appendChild(inputNodeReply);
     entry.appendChild(buttonNode);
+    // entry.appendChild(replysNode);
 
     return entry;
     // console.log('create reoky form');
