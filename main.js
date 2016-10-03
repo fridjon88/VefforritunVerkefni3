@@ -214,7 +214,7 @@ var Forum = (function() {
    */
   function createReplyForm() { //work in progress
     var entry = document.createElement('form');
-    entry.classList.add('item', 'item-new', 'list-group-item','form-group', 'container-fluid');
+    entry.classList.add('item','item-new', 'list-group-item','form-group', 'container-fluid');
 
     // var nameNode = document.createElement('h2');
     // nameNode.classList.add('name');
@@ -225,21 +225,21 @@ var Forum = (function() {
     inputNodeName.name = 'name';
     // inputNodeName.class.add('form-control', 'form-inline');
     inputNodeName.placeholder = 'Nafn';
-    inputNodeName.classList.add('name','form-inline', 'col-xs-3');
+    inputNodeName.classList.add('name','form-inline', 'col-sm-3', 'col-xs-5');
     inputNodeName.appendChild(document.createTextNode(''));
 
     var inputNodeReply = document.createElement('input');
     inputNodeReply.className = 'comment';
     inputNodeReply.name = 'comment';
     inputNodeReply.placeholder = 'Svar';
-    inputNodeReply.classList.add('reply', 'col-xs-3', 'col-xs-offset-1');
+    inputNodeReply.classList.add('reply', 'col-sm-5', 'col-sm-offset-1', 'col-xs-6', 'col-xs-offset-1');
     inputNodeReply.appendChild(document.createTextNode(''));
 
     var buttonNode = document.createElement('button');
     buttonNode.className = 'submitButton';
     buttonNode.type = 'submit';
     buttonNode.name = 'submitButton';
-    buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil','col-xs-2', 'col-xs-offset-1');
+    buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil','col-sm-2','col-sm-offset-1', 'col-xs-5','col-xs-offset-3');
     buttonNode.appendChild(document.createTextNode('Svara'));
     console.log('Bjó til', buttonNode, inputNodeReply);
     entry.addEventListener('submit', newReplyHandler);
