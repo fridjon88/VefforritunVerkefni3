@@ -213,7 +213,7 @@ var Forum = (function() {
    */
   function createReplyForm() { //work in progress
     var entry = document.createElement('form');
-    entry.classList.add('item', 'item-new', 'list-group-item', 'jumbotron');
+    entry.classList.add('item', 'item-new', 'list-group-item', 'jumbotron', '.form-control', '.form-group');
 
     var nameNode = document.createElement('h2');
     nameNode.classList.add('name');
@@ -241,16 +241,7 @@ var Forum = (function() {
     buttonNode.appendChild(document.createTextNode('Svara'));
     console.log('Bjó til', buttonNode, inputNodeReply);
     entry.addEventListener('submit', newReplyHandler);
-    // var replysNode = document.createElement('li');
-    // replysNode.appendChild(document.createTextNode('NODE'));
 
-    // entry.addEventListener('submit', newEntryHandler);
-    // Hvað er í gangi hér?! hvernig læt ég takkann hlusta?!
-    //skoða replayHandler!!! allt þessar 4 línur semi rugl
-    // var button = form.querySelector('button');
-    // var nameEntry = form.querySelector('input[name=name]');
-    // var textEntry = form.querySelector('textarea[name=comment]');
-    // button.addEventListener('click', addReply(replysNode,nameEntry,textEntry));
 
     entry.appendChild(nameNode);
     entry.appendChild(inputNodeName);
