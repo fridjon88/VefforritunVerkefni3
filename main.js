@@ -123,6 +123,7 @@ var Forum = (function() {
 
     var replysNode = document.createElement('li');
     replysNode.classList.add('item', 'item-new', 'list-group-item');
+    // var replysNode = form.querySelector('.form');
     addReply(replysNode,name, text);
 
     var list = document.querySelector('.list');
@@ -213,37 +214,38 @@ var Forum = (function() {
    */
   function createReplyForm() { //work in progress
     var entry = document.createElement('form');
-    entry.classList.add('item', 'item-new', 'list-group-item', 'jumbotron', '.form-control', '.form-group');
+    entry.classList.add('item', 'item-new', 'list-group-item','form-group', 'container-fluid');
 
-    var nameNode = document.createElement('h2');
-    nameNode.classList.add('name');
-    nameNode.appendChild(document.createTextNode(''));
+    // var nameNode = document.createElement('h2');
+    // nameNode.classList.add('name');
+    // nameNode.appendChild(document.createTextNode(''));
 
     var inputNodeName = document.createElement('input');
     inputNodeName.className = 'name';
     inputNodeName.name = 'name';
+    // inputNodeName.class.add('form-control', 'form-inline');
     inputNodeName.placeholder = 'Nafn';
-    inputNodeName.classList.add('name');
+    inputNodeName.classList.add('name','form-inline', 'col-xs-3');
     inputNodeName.appendChild(document.createTextNode(''));
 
     var inputNodeReply = document.createElement('input');
     inputNodeReply.className = 'comment';
     inputNodeReply.name = 'comment';
     inputNodeReply.placeholder = 'Svar';
-    inputNodeReply.classList.add('reply');
+    inputNodeReply.classList.add('reply', 'col-xs-3', 'col-xs-offset-1');
     inputNodeReply.appendChild(document.createTextNode(''));
 
     var buttonNode = document.createElement('button');
     buttonNode.className = 'submitButton';
     buttonNode.type = 'submit';
     buttonNode.name = 'submitButton';
-    buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil');
+    buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil','col-xs-2', 'col-xs-offset-1');
     buttonNode.appendChild(document.createTextNode('Svara'));
     console.log('Bjó til', buttonNode, inputNodeReply);
     entry.addEventListener('submit', newReplyHandler);
 
 
-    entry.appendChild(nameNode);
+    // entry.appendChild(nameNode);
     entry.appendChild(inputNodeName);
     entry.appendChild(inputNodeReply);
     entry.appendChild(buttonNode);
