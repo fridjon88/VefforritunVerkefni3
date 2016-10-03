@@ -48,6 +48,13 @@ var Forum = (function() {
 
     form.addEventListener('submit', newEntryHandler);
 
+    //add posts
+    list.appendChild(addEntry('Jean-Luc Picard', 'The Prime Directive is not just a set of rules; it is a philosophy ... and a very correct one. History has proven again and again that whenever mankind interferes with a less developed civilization, no matter how well intentioned that interference may be, the results are invariably disastrous.'));
+    // var replysNode = document.createElement('li');
+    // replysNode.classList.add('item', 'item-new', 'list-group-item');
+    // var replysNode = form.querySelector('.form');
+    addReply(list,'Lt. Cmdr. Data', 'We are more alike than unlike, my dear Captain. I have pores. Humans have pores. I have... fingerprints. Humans have fingerprints. My chemical nutrients are like your blood. If you prick me ... do I not ... leak?');
+
   }
 
   /**
@@ -121,15 +128,14 @@ var Forum = (function() {
     console.log('nafn er', name);
     console.log('texti er', text);
 
-    var replysNode = document.createElement('li');
-    replysNode.classList.add('item', 'item-new', 'list-group-item');
-    // var replysNode = form.querySelector('.form');
-    addReply(replysNode,name, text);
 
     var list = document.querySelector('.list');
-    console.log('Bætum', replysNode, 'við', list);
+    addReply(list,name, text);
 
-    list.appendChild(replysNode);
+
+    // console.log('Bætum', replysNode, 'við', list);
+
+    // list.appendChild(replysNode);
 
     nameEntry.value = '';
     textEntry.value = '';
