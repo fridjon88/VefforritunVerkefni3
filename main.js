@@ -131,7 +131,8 @@ var Forum = (function() {
 
     var list = document.querySelector('.list');
     addReply(list,name, text);
-
+//ATH ATH WORKIN ON THIS 23 53 3 10 2016
+    textEntry.addEventListener(submit ,constrainText.bind(null, 100));
 
     // console.log('Bætum', replysNode, 'við', list);
 
@@ -170,6 +171,8 @@ var Forum = (function() {
     textNode.classList.add('text');
     textNode.appendChild(document.createTextNode(text));
 
+    var unorderedList = document.querySelector('ul');
+
     replyNode.appendChild(nameNode);
     replyNode.appendChild(textNode);
 
@@ -203,9 +206,15 @@ var Forum = (function() {
       textNode.classList.add('text');
       textNode.appendChild(document.createTextNode(text));
 
+      var replyNode = document.createElement('div');
+      replyNode.classList.add('replyNode', 'reply');
+      replyNode.appendChild(createReplyForm());
+
+
       entry.appendChild(nameNode);
       entry.appendChild(textNode);
-      entry.appendChild(createReplyForm());
+      entry.appendChild(replyNode);
+
 
 
       return entry;
@@ -225,6 +234,7 @@ var Forum = (function() {
     // var nameNode = document.createElement('h2');
     // nameNode.classList.add('name');
     // nameNode.appendChild(document.createTextNode(''));
+
 
     var inputNodeName = document.createElement('input');
     inputNodeName.className = 'name';
@@ -248,6 +258,7 @@ var Forum = (function() {
     buttonNode.classList.add('btn', 'btn-primary', 'glyphicon', 'glyphicon-pencil','col-sm-2','col-sm-offset-1', 'col-xs-5','col-xs-offset-3');
     buttonNode.appendChild(document.createTextNode('Svara'));
     console.log('Bjó til', buttonNode, inputNodeReply);
+
     entry.addEventListener('submit', newReplyHandler);
 
 
@@ -255,6 +266,7 @@ var Forum = (function() {
     entry.appendChild(inputNodeName);
     entry.appendChild(inputNodeReply);
     entry.appendChild(buttonNode);
+
     // entry.appendChild(replysNode);
 
     return entry;
